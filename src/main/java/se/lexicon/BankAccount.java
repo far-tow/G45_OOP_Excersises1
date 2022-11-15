@@ -12,124 +12,98 @@ public class BankAccount {
 
     //Fields
     private int accountNumber;
-    private int balanceNumber;
-    private String customerFirstName;
-    private String customerLastName;
+    private double balance;
+    private String customerName;
     private String customerEmail;
     private String customerPhone;
 
     //Constructors
 
-    public BankAccount() {
-        this.accountNumber = ++sequencer;
-    }
-
-    public BankAccount(int accountNumber, int balanceNumber, String customerFirstName, String customerLastName,
-                       String customerEmail, String customerPhone) {
-        this();
-        this.accountNumber = accountNumber;
-        this.balanceNumber = balanceNumber;
-        this.customerFirstName = customerFirstName;
-        this.customerLastName = customerLastName;
+    public BankAccount(int balance, String customerName, String customerEmail, String customerPhone) {
+        this.accountNumber= ++sequencer;
+        this.balance = balance;
+        this.customerName = customerName;
         this.customerEmail = customerEmail;
         this.customerPhone = customerPhone;
     }
 
-    public BankAccount(int balanceNumber, String customerFirstName, String customerLastName, String customerEmail,
-                       String customerPhone) {
-        this.balanceNumber = balanceNumber;
-        this.customerFirstName = customerFirstName;
-        this.customerLastName = customerLastName;
-        this.customerEmail = customerEmail;
-        this.customerPhone = customerPhone;
-    }
-
-    public BankAccount(String customerFirstName, String customerLastName, String customerEmail, String customerPhone) {
-        this.customerFirstName = customerFirstName;
-        this.customerLastName = customerLastName;
-        this.customerEmail= customerEmail;
-        this.customerPhone = customerPhone;
-    }
-
-    public BankAccount(String customerFirstName, String customerLastName) {
-        //this();
-        //setBrand(brand);
-        this.customerFirstName = customerFirstName;
-        this.customerLastName = customerLastName;
-    }
 
 
     //Methods
-    public String getCustomerInformation(){
-        return "Account Number: "+ accountNumber +"\n" + "Customers Name: " + customerFirstName + " " +
-                "Customers Last Name: " + customerLastName;
+    public void deposit (double amount){
+        if (amount < 0){
+            throw new IllegalArgumentException("Amount has to be more than 0");
 
+        }
+        balance = balance + amount;
+    }
+    public double withDraw (double amount){
+        if (amount < 0){
+            throw new IllegalArgumentException("Amount has to be more than 0");
+        }
+        if (amount > balance){
+            throw new IllegalArgumentException("Amount is greater than the balance!!");
+        }
+        balance = balance - amount;
+        return balance;
     }
 
-    public String getCustomerInformationL(){
-        return "Account Number: "+ accountNumber +"\n" + "Customers Name: " + customerFirstName + " " + "Customers Last Name: " +
-                customerLastName + "Customer Email:" + customerEmail + "Customer Phone: " + customerPhone;
-    }
+
 
 
     //Getters & Setters
-    public int getAccountNo() {
+
+
+    public int getAccountNumber() {
 
         return accountNumber;
     }
 
-    /*public void setAccountNo(int accountNumber) {
+    public void setAccountNumber(int accountNumber) {
+
         this.accountNumber = accountNumber;
-    }*/
-
-    public int getBalanceNo() {
-
-        return balanceNumber;
     }
 
-    public void setBalancNo(int balanceNumber) {
-
-        this.balanceNumber = balanceNumber;
+    public double getBalance() {
+        return balance;
     }
 
-    public String getFirstName() {
-
-        return customerFirstName;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
-    public void setFirstName(String customerFirstName) {
-
-        this.customerFirstName = customerFirstName;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public String getLastName() {
-
-        return customerLastName;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
-    public void setLastName(String customerLastName) {
-
-        this.customerLastName = customerLastName;
-    }
-
-    public String getEmail() {
-
+    public String getCustomerEmail() {
         return customerEmail;
     }
 
-    public void setEmail(String customerEmail) {
-
+    public void setCustomerEmail(String customerEmail) {
         this.customerEmail = customerEmail;
     }
 
-    public String getPhone() {
-
+    public String getCustomerPhone() {
         return customerPhone;
     }
 
-    public void setPhone(String customerPhone) {
-
+    public void setCustomerPhone(String customerPhone) {
         this.customerPhone = customerPhone;
     }
 
+    @Override
+    public String toString() {
+        return "BankAccount{" +
+                "accountNumber=" + accountNumber +
+                ", balance=" + balance +
+                ", customerName='" + customerName + '\'' +
+                ", customerEmail='" + customerEmail + '\'' +
+                ", customerPhone='" + customerPhone + '\'' +
+                '}';
+    }
 }
