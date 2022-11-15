@@ -7,10 +7,10 @@ package se.lexicon;
 
 
 public class App {
-    public static void main( String[] args ) {
+    public static void main(String[] args) {
 
-        BankAccount cust1 = new BankAccount(10000,"Erik Svensson","erik@test.se","0707232323");
-        BankAccount cust2 = new BankAccount(3000,"Anders Andersson","anders@test.se","0702333333");
+        BankAccount cust1 = new BankAccount(10000, "Erik Svensson", "erik@test.se", "0707232323");
+        BankAccount cust2 = new BankAccount(3000, "Anders Andersson", "anders@test.se", "0702333333");
         System.out.println(cust1.toString());
         System.out.println(cust2.toString());
         System.out.println();

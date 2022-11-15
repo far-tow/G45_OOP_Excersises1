@@ -20,7 +20,7 @@ public class BankAccount {
     //Constructors
 
     public BankAccount(int balance, String customerName, String customerEmail, String customerPhone) {
-        this.accountNumber= ++sequencer;
+        this.accountNumber = ++sequencer;
         this.balance = balance;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
@@ -28,27 +28,25 @@ public class BankAccount {
     }
 
 
-
     //Methods
-    public void deposit (double amount){
-        if (amount < 0){
+    public void deposit(double amount) {
+        if (amount < 0) {
             throw new IllegalArgumentException("Amount has to be more than 0");
 
         }
         balance = balance + amount;
     }
-    public double withDraw (double amount){
-        if (amount < 0){
+
+    public double withDraw(double amount) {
+        if (amount < 0) {
             throw new IllegalArgumentException("Amount has to be more than 0");
         }
-        if (amount > balance){
+        if (amount > balance) {
             throw new IllegalArgumentException("Amount is greater than the balance!!");
         }
         balance = balance - amount;
         return balance;
     }
-
-
 
 
     //Getters & Setters
